@@ -6,9 +6,6 @@ import {connect, ConnectedProps, useDispatch, useSelector} from 'react-redux';
 import {IGlobalState} from "../../redux/state";
 
 const CurrencyEContainer: React.FC<TProps> = (props) => {
-
-    const dispatch = useDispatch()
-
     const {
         currencies,
         currentCurrency,
@@ -16,6 +13,8 @@ const CurrencyEContainer: React.FC<TProps> = (props) => {
         amountOfRUR,
         amountOfCurrency,
     } = useSelector<IGlobalState, CurrencyState>(state => state.currency);
+
+    const dispatch = useDispatch()
 
     let currencyRate: number = 0;
     const currenciesName = currencies.map((currency: CurrencyType) => {
@@ -54,7 +53,7 @@ const CurrencyEContainer: React.FC<TProps> = (props) => {
     };
 
     return (
-        <React.Fragment>
+        <>
             <CurrencyExchange
                 currenciesName={currenciesName}
                 currentCurrency={currentCurrency}
@@ -66,7 +65,7 @@ const CurrencyEContainer: React.FC<TProps> = (props) => {
                 changeAction={changeAction}
                 changeCurrentCurrency={changeCurrentCurrency}
             />
-        </React.Fragment>
+        </>
     );
 };
 

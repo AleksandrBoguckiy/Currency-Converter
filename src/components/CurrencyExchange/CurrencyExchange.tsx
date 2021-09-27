@@ -12,19 +12,21 @@ type CurrencyExchangePropsType = {
     changeCurrentCurrency: (e: React.MouseEvent<HTMLLIElement>) => void;
 };
 
-const CurrencyExchange: React.FC<CurrencyExchangePropsType> = ({
-                                                                   currenciesName,
-                                                                   currentCurrency,
-                                                                   currencyRate,
-                                                                   isBuying,
-                                                                   amountOfRUR,
-                                                                   amountOfCurrency,
-                                                                   changeCurrencyField,
-                                                                   changeAction,
-                                                                   changeCurrentCurrency,
-                                                               }) => {
+const CurrencyExchange: React.FC<CurrencyExchangePropsType> = (props) => {
+    const {
+        currenciesName,
+        currentCurrency,
+        currencyRate,
+        isBuying,
+        amountOfRUR,
+        amountOfCurrency,
+        changeCurrencyField,
+        changeAction,
+        changeCurrentCurrency,
+    } = props
+    
     const viewCurrency = isBuying ? (
-        <React.Fragment>
+        <>
             <label>
                 You give the next amount of RUR:
                 <input value={amountOfRUR} data-currency="rur" onChange={changeCurrencyField}/>
@@ -33,7 +35,7 @@ const CurrencyExchange: React.FC<CurrencyExchangePropsType> = ({
                 You get the next amount of {currentCurrency}:
                 <input value={amountOfCurrency} data-currency="currency" onChange={changeCurrencyField}/>
             </label>
-        </React.Fragment>
+        </>
     ) : (
         <React.Fragment>
             <label>
